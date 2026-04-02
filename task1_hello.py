@@ -1,0 +1,1 @@
+print ("witaj w Pythonie!")
