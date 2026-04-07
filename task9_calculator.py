@@ -16,5 +16,8 @@ elif operation == "/":
         result = num1 / num2
     else:
         result = "Nie można dzielić przez zero!"
-
+        
+    else:
+        result = "Nieznana operacja!"
+        
 print(f"Wynik: {result}")
