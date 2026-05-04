@@ -1,0 +1,16 @@
+Lekcja 8: Obsługa wyjątków w Pythonie (Wersja
+rozszerzona)
+#lekcja #python #wyjątki #błędy #programowanie-defensywne
+W tej lekcji nauczymy się, jak pisać solidny i niezawodny kod, który potrafi "przetrwać" w
+obliczu nieoczekiwanych problemów. Zgłębimy mechanizm wyjątków w Pythonie – od ich
+przechwytywania, przez tworzenie własnych typów błędów, aż po najlepsze praktyki, które
+sprawią, że nasze programy będą bardziej profesjonalne i odporne na błędy.
+1. Czym są wyjątki i jak działają?
+Analogia: Wyobraź sobie, że jedziesz samochodem (wykonujesz program). Wyjątek jest jak
+nagła awaria (np. przebita opona). Samochód nie może jechać dalej. Musisz się zatrzymać i
+podjąć odpowiednie działania (obsłużyć wyjątek), np. zmienić koło. Jeśli nie wiesz, co robić
+(brak bloku except ), podróż kończy się w tym miejscu (program się zawiesza).
+Co się dzieje, gdy wystąpi wyjątek?
+Gdy wyjątek zostaje rzucony, Python "zwija stos wywołań" (ang. unwinds the call stack),
+szukając odpowiedniego "mechanika" – czyli bloku except , który potrafi obsłużyć dany typ
+błędu.
