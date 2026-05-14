@@ -1,0 +1,5 @@
+2026-05-04 10:15:35 ERROR Nie można załadować modułu auth
+2026-05-04 10:15:45 ERROR Timeout połączenia z bazą danych
+2026-05-04 10:16:10 ERROR Niepoprawne dane wejściowe
+2026-05-04 10:16:40 ERROR Błąd zapisu pliku backupu
+2026-05-04 10:17:20 ERROR Nie można zapisać logów
