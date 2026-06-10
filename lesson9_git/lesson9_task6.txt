@@ -1,0 +1,280 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch feature-branch
+Last commands done (3 commands done):
+   pick 32aff1a # temp 2: zmiana tekstu wiadomości
+   pick f5fddfc # temp 3: dodano komentarz do funkcji
+  (see more in file .git/rebase-merge/done)
+No commands remaining.
+You are currently rebasing branch 'feature-branch' on 'a7723ce'.
+  (all conflicts fixed: run "git rebase --continue")
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        et --hard a7723ce
+        et --hard cd206ea
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase --continue
+Successfully rebased and updated refs/heads/feature-branch.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log --oneline
+f5fddfc (HEAD -> feature-branch) temp 3: dodano komentarz do funkcji
+32aff1a temp 2: zmiana tekstu wiadomości
+df11ba8 feat: dodano zmienną message w funkcji
+a7723ce (master) fix: update hello world message
+14bad41 feat: add hello world function
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout master
+Switched to branch 'master'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git branch -D feature-branch
+Deleted branch feature-branch (was f5fddfc).
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout -b feature-branch
+Switched to a new branch 'feature-branch'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: dodanie zmiennej message"
+[feature-branch 3d9341c] feat: dodanie zmiennej message
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: zmiana tekstu message"
+[feature-branch a3679d1] feat: zmiana tekstu message
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: dodanie komentarza"
+[feature-branch 2547646] feat: dodanie komentarza
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:49:31 2026 +0200
+
+    feat: dodanie komentarza
+
+commit a3679d10b2145352cf5d21a54bdf4e01a8910ace
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:48:52 2026 +0200
+
+    feat: zmiana tekstu message
+
+commit 3d9341cd2a9e6878d1539b04f9e9ab3f7c2166f1
+...skipping...
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:49:31 2026 +0200
+
+    feat: dodanie komentarza
+
+commit a3679d10b2145352cf5d21a54bdf4e01a8910ace
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:48:52 2026 +0200
+
+    feat: zmiana tekstu message
+
+commit 3d9341cd2a9e6878d1539b04f9e9ab3f7c2166f1
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase -i HEAD~3                           
+hint: Waiting for your editor to close the file... 
+ *  History restored 
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> cd C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch feature-branch
+No commands done.
+Next commands to do (3 remaining commands):
+   pick 3d9341c # feat: dodanie zmiennej message
+   pick a3679d1 # feat: zmiana tekstu message
+  (use "git rebase --edit-todo" to view and edit)
+You are currently editing a commit while rebasing branch 'feature-branch' on 'a7723ce'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+nothing to commit, working tree clean
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase --edit-todo
+hint: Waiting for your editor to close the file... 
+ *  History restored 
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> git status 
+fatal: not a git repository (or any of the parent directories): .git
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> cd C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch feature-branch
+No commands done.
+Next commands to do (3 remaining commands):
+   pick 3d9341c # feat: dodanie zmiennej message
+   pick a3679d1 # feat: zmiana tekstu message
+  (use "git rebase --edit-todo" to view and edit)
+You are currently editing a commit while rebasing branch 'feature-branch' on 'a7723ce'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+nothing to commit, working tree clean
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:49:31 2026 +0200
+
+    feat: dodanie komentarza
+
+commit a3679d10b2145352cf5d21a54bdf4e01a8910ace
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:48:52 2026 +0200
+
+    feat: zmiana tekstu message
+
+commit 3d9341cd2a9e6878d1539b04f9e9ab3f7c2166f1
+...skipping...
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+commit 2547646c4f6e179ae663c3924d5281af7527a3cf (HEAD -> feature-branch)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:49:31 2026 +0200
+
+    feat: dodanie komentarza
+
+commit a3679d10b2145352cf5d21a54bdf4e01a8910ace
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 16:48:52 2026 +0200
+
+    feat: zmiana tekstu message
+
+commit 3d9341cd2a9e6878d1539b04f9e9ab3f7c2166f1
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase --abort
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status        
+On branch feature-branch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        e --abort
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> Remove-Item "e --abort"
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git clean -f
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> dir
+
+
+    Directory: C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic
+
+
+Mode                 LastWriteTime         Length Name                                                                                  
+----                 -------------         ------ ----                                                                                  
+-a----        07.06.2026     17:14            119 app.py                                                                                
+
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch feature-branch
+nothing to commit, working tree clean
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout master
+Switched to branch 'master'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=<remote>/<branch> master
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git branch -vv
+  feature-branch 2547646 feat: dodanie komentarza
+* master         a7723ce fix: update hello world message
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git remote -v
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git remote add origin git@github.com:chodorkarolina-art/lesson9_task2.git
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git remote -v
+origin  git@github.com:chodorkarolina-art/lesson9_task2.git (fetch)
+origin  git@github.com:chodorkarolina-art/lesson9_task2.git (push)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git branch -r
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git branch --set-upstream-to=origin/main master
+fatal: the requested upstream branch 'origin/main' does not exist
+hint:
+hint: If you are planning on basing your work on an upstream
+hint: branch that already exists at the remote, you may need to
+hint: run "git fetch" to retrieve it.
+hint:
+hint: If you are planning to push out a new local branch that
+hint: will track its remote counterpart, you may want to use
+hint: "git push -u" to set the upstream config as you push.
+hint: Disable this message with "git config set advice.setUpstreamFailure false"
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git push -u origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 553 bytes | 553.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/chodorkarolina-art/lesson9_task2/pull/new/master
+remote: 
+To github.com:chodorkarolina-art/lesson9_task2.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git push -u origin master
+branch 'master' set up to track 'origin/master'.
+Everything up-to-date
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout -b feature-branch
+fatal: a branch named 'feature-branch' already exists
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout feature-branch
+Switched to branch 'feature-branch'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git branch
+* feature-branch
+  master
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: dodanie wersji do komunikatu" 
+[feature-branch e4e3aad] feat: dodanie wersji do komunikatu
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: dodanie zmiennej użytkownika"
+[feature-branch e6e702a] feat: dodanie zmiennej użytkownika
+ 1 file changed, 1 insertion(+)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "chore: poprawa komentarza"
+[feature-branch dbefd6a] chore: poprawa komentarza
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log --oneline
+dbefd6a (HEAD -> feature-branch) chore: poprawa komentarza
+e6e702a feat: dodanie zmiennej użytkownika
+e4e3aad feat: dodanie wersji do komunikatu
+2547646 feat: dodanie komentarza
+a3679d1 feat: zmiana tekstu message
+3d9341c feat: dodanie zmiennej message
+a7723ce (origin/master, master) fix: update hello world message
+14bad41 feat: add hello world function
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase -i HEAD~3
+error: Your local changes to the following files would be overwritten by checkout:
+        app.py
+Please commit your changes or stash them before you switch branches.
+Aborting
+error: could not detach HEAD
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "zapis zmian w app.py"
+On branch feature-branch
+nothing to commit, working tree clean
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log --oneline
+a7723ce (HEAD -> master, origin/master) fix: update hello world message
+14bad41 feat: add hello world function
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git checkout feature-branch
+Switched to branch 'feature-branch'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch feature-branch
+nothing to commit, working tree clean
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git rebase -i HEAD~3
+[detached HEAD 15d2ce6] feat: dodanie funkcji użytkownika i komunikatu
+ Date: Sun Jun 7 18:13:28 2026 +0200
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+Successfully rebased and updated refs/heads/feature-branch.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git push origin feature-branch --force
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (12/12), 1.19 KiB | 1.19 MiB/s, done.
+Total 12 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+remote: 
+remote: Create a pull request for 'feature-branch' on GitHub by visiting:
+remote:      https://github.com/chodorkarolina-art/lesson9_task2/pull/new/feature-branch
+remote: 
+To github.com:chodorkarolina-art/lesson9_task2.git
+ * [new branch]      feature-branch -> feature-branch
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> 

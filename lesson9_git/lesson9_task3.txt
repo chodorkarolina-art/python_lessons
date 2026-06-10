@@ -1,0 +1,23 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> cd ..
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> cd ..
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> mkdir team-project-basic
+
+
+    Directory: C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git
+
+
+Mode                 LastWriteTime         Length Name                                                                                        
+----                 -------------         ------ ----                                                                                        
+d-----        07.06.2026     15:13                team-project-basic                                                                          
+
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> cd team-project-basic
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git init
+Initialized empty Git repository in C:/Users/DRI/Desktop/python_lessons/python_lessons/lesson9_git/team-project-basic/.git/
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git config user.name "Karolina Chodor"
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git config user.email "chodor.karolina@gmail.com"
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git config user.name
+Karolina Chodor
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git config user.email
+chodor.karolina@gmail.com
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> 

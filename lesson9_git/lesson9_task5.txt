@@ -1,0 +1,171 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   app.py
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git reset HEAD app.py
+Unstaged changes after reset:
+M       app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   app.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git add app.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git commit -m "feat: second update hello world"
+[master cd206ea] feat: second update hello world
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+...skipping...
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+...skipping...
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+...skipping...
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> 
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+...skipping...
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+...skipping...
+commit cd206ea95e8415e47149dbbba5179920d7e86b23 (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:42:17 2026 +0200
+
+    feat: second update hello world
+
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> 
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git reset --hard a7723ce
+HEAD is now at a7723ce fix: update hello world message
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> git log
+commit a7723ceda243598ce62b34e8a58ce97302e61e4d (HEAD -> master)
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:34:21 2026 +0200
+
+    fix: update hello world message
+
+commit 14bad41e4e1600c753d26d17ff61db1638939540
+Author: Karolina Chodor <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 15:33:06 2026 +0200
+
+    feat: add hello world function
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\team-project-basic> 

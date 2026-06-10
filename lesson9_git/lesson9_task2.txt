@@ -1,0 +1,29 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git clone git@github.com:chodorkarolina-art/lesson9_task2.git
+Cloning into 'lesson9_task2'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (3/3), done.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> cd lesson9_task2
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> git checkout -b moja-galaz
+Switched to a new branch 'moja-galaz'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> git add contributors.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> git commit -m "Dodano contributors.txt"
+[moja-galaz 9f3c88a] Dodano contributors.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 contributors.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> git push -u origin moja-galaz
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 20 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 310 bytes | 310.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: 
+remote: Create a pull request for 'moja-galaz' on GitHub by visiting:
+remote:      https://github.com/chodorkarolina-art/lesson9_task2/pull/new/moja-galaz
+remote: 
+To github.com:chodorkarolina-art/lesson9_task2.git
+ * [new branch]      moja-galaz -> moja-galaz
+branch 'moja-galaz' set up to track 'origin/moja-galaz'.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo\lesson9_task2> 

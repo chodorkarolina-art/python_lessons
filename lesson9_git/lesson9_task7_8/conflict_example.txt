@@ -1,0 +1,4 @@
+Linia 1 - zmieniona w master
+Linia 2 - z master
+Linia 2 - z branch-A
+
