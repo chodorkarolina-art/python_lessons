@@ -1,9 +1,0 @@
-```mermaid
-classDiagram
-    A <|-- B
-    A <|-- C
-    B <|-- D
-    C <|-- E
-    D <|-- F
-    E <|-- F
-```
