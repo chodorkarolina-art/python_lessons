@@ -1,0 +1,6 @@
+Kodowanie znaków
+Czym jest kodowanie?
+Dlaczego to ważne? Bez wspólnego standardu kodowania, 
+ten sam ciąg bajtów mógłby być interpretowany jako "cześć" w jednym systemie, 
+a jako "Äĺđś" w innym.
+Ewolucja: ASCII → Unicode → UTF-8

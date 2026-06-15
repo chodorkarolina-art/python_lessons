@@ -1,0 +1,38 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git> cd C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git init
+Initialized empty Git repository in C:/Users/DRI/Desktop/python_lessons/python_lessons/lesson9_git/repo_hw_3/.git/
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git branch
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git add konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git commit -m "feat: dodano poczatkowy tekst"
+[master (root-commit) c36dfbc] feat: dodano poczatkowy tekst
+ 1 file changed, 1 insertion(+)
+ create mode 100644 konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git checkout -b galaz-A
+Switched to a new branch 'galaz-A'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git add konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git commit -m "feat: dodano linie z galaz-A"
+[galaz-A 43c7629] feat: dodano linie z galaz-A
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git checkout main
+error: pathspec 'main' did not match any file(s) known to git
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git checkout master
+Switched to branch 'master'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git checkout master
+Already on 'master'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git add konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git commit -m "feat: dodano linie z master"
+[master f5c2f16] feat: dodano linie z master
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git merge galaz-A
+Auto-merging konflikt.txt
+CONFLICT (content): Merge conflict in konflikt.txt
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git add konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git commit -m "merge: rozwiazano konflikt w konflikt.txt"
+[master 7252eb7] merge: rozwiazano konflikt w konflikt.txt
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> git log --oneline
+7252eb7 (HEAD -> master) merge: rozwiazano konflikt w konflikt.txt
+f5c2f16 feat: dodano linie z master
+43c7629 (galaz-A) feat: dodano linie z galaz-A
+c36dfbc feat: dodano poczatkowy tekst
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\repo_hw_3> 

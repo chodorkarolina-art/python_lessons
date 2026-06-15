@@ -1,0 +1,40 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git branch
+* master
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git checkout -b feature-login
+Switched to a new branch 'feature-login'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git branch
+* feature-login
+  master
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git status
+On branch feature-login
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        login.py
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git add login.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git commit -m "Dodano plik logowania"
+[feature-login 2d3af07] Dodano plik logowania
+ 1 file changed, 1 insertion(+)
+ create mode 100644 login.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git checkout master
+Switched to branch 'master'
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git merge feature-login
+Updating 4595b59..2d3af07
+Fast-forward
+ login.py | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 login.py
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> git log
+commit 2d3af07f207aa29d4539527cb9970e1c6b5f8fde (HEAD -> master, feature-login)
+Author: Karolina <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 10:15:00 2026 +0200
+
+    Dodano plik logowania
+
+commit 4595b59d053aab1008342bc67b2e5680d5e13a41
+Author: Karolina <chodor.karolina@gmail.com>
+Date:   Sun Jun 7 09:55:59 2026 +0200
+
+    Dodano plik README
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson9_git\moje_repo> 

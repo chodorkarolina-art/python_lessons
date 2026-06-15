@@ -1,0 +1,16 @@
+2026-05-04 10:15:23 INFO Uruchamianie systemu
+2026-05-04 10:15:25 INFO Ładowanie modułów
+2026-05-04 10:15:30 WARNING Niski poziom pamięci
+2026-05-04 10:15:35 ERROR Nie można załadować modułu auth
+2026-05-04 10:15:40 INFO Próba ponownego połączenia
+2026-05-04 10:15:45 ERROR Timeout połączenia z bazą danych
+2026-05-04 10:15:50 INFO Połączenie przywrócone
+2026-05-04 10:16:00 WARNING Wysokie użycie CPU
+2026-05-04 10:16:10 ERROR Niepoprawne dane wejściowe
+2026-05-04 10:16:20 INFO Zakończono operację
+2026-05-04 10:16:30 INFO Uruchamianie zadania backupu
+2026-05-04 10:16:40 ERROR Błąd zapisu pliku backupu
+2026-05-04 10:16:50 INFO Ponowna próba zapisu
+2026-05-04 10:17:00 INFO Backup zakończony sukcesem
+2026-05-04 10:17:10 WARNING Brak miejsca na dysku
+2026-05-04 10:17:20 ERROR Nie można zapisać logów
