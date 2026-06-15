@@ -1,4 +1,0 @@
-Pierwsza linia tekstu.
-Linia dodana w master.
-Linia dodana w galaz-A.
-
