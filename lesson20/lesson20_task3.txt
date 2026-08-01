@@ -1,0 +1,13 @@
+# Odpowiedź Lesson20_task3
+
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> python manage.py makemigrations
+Migrations for 'ogloszenia':
+  ogloszenia\migrations\0002_product_alter_ogloszenie_options.py
+    + Create model Product
+    ~ Change Meta options on ogloszenie
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, ogloszenia, sessions
+Running migrations:
+  Applying ogloszenia.0002_product_alter_ogloszenie_options... OK
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> 

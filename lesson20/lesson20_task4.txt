@@ -1,0 +1,23 @@
+<!-- Odpowiedź : lesson20_task4 - Wyświetlenie danych z bazy w szablonie -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkty</title>
+</head>
+<body>
+
+    <h1>Lista produktów</h1>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong><br>
+                {{ product.description }}<br>
+                Cena: {{ product.price }} zł
+            </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

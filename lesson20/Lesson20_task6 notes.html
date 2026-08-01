@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<!-- lesson20_task6 - Lista wszystkich notatek -->
+
+{% block title %}
+Notatki
+{% endblock %}
+
+{% block content %}
+
+<h2>Lista wszystkich notatek</h2>
+
+<ul>
+    {% for note in notes %}
+        <li>
+            <a href="/note/{{ note.id }}/">
+                {{ note.title }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Brak notatek.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
