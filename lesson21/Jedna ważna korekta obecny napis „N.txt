@@ -1,0 +1,1 @@
+Jedna ważna korekta: obecny napis „NOWOŚĆ!” pojawia się przy każdym opublikowanym artykule, a zadanie wymaga go tylko dla artykułów opublikowanych w ciągu ostatnich 3 dni. Do pełnego wykonania zadania trzeba dodać do modelu Article pole z datą publikacji, np. published_at.

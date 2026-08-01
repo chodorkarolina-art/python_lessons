@@ -1,0 +1,41 @@
+<!-- lesson21_task8 - Lista opublikowanych artykułów -->
+
+{% extends "base.html" %}
+
+{% block title %}
+Artykuły
+{% endblock %}
+
+{% block content %}
+
+<h2>Lista artykułów</h2>
+
+<ul>
+    {% for article in articles %}
+        <li>
+            {{ article.title }}
+
+            {% if article.is_published %}
+                <span>NOWOŚĆ!</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Brak artykułów.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
+<!-- lesson21_task8 -->
+            {% if article.is_published %}
+                <span>NOWOŚĆ!</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Nie znaleziono artykułów.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
