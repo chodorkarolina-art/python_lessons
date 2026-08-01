@@ -1,0 +1,27 @@
+<!-- lesson20_task7 - Formularz dodawania produktu -->
+
+{% extends "base.html" %}
+
+{% block title %}
+Dodaj produkt
+{% endblock %}
+
+{% block content %}
+
+<h2>Dodaj nowy produkt</h2>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Zapisz produkt</button>
+
+</form>
+
+<p>
+    <a href="/products/">← Powrót do listy produktów</a>
+</p>
+
+{% endblock %}

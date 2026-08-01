@@ -1,0 +1,31 @@
+{% load static %}
+
+<!-- lesson20_task5 - Szablon bazowy -->
+<!-- lesson21_task4 - Podłączenie pliku CSS -->
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+        Moja strona
+        {% endblock %}
+    </title>
+
+    <!-- lesson21_task4 - Podłączenie arkusza stylów -->
+    <link rel="stylesheet" href="{% static 'ogloszenia/style.css' %}">
+
+</head>
+<body>
+
+    <!-- lesson20_task5 -->
+    <h1>Moja aplikacja Django</h1>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

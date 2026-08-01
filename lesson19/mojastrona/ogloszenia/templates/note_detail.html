@@ -1,0 +1,21 @@
+<!-- lesson20_task6 - Szczegóły pojedynczej notatki -->
+
+{% extends "base.html" %}
+
+{% block title %}
+{{ note.title }}
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ note.title }}</h2>
+
+<p>
+    {{ note.content }}
+</p>
+
+<p>
+    <a href="/notes/">← Powrót do listy notatek</a>
+</p>
+
+{% endblock %}

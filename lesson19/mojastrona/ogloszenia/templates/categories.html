@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<!-- lesson21_task3 - Lista wszystkich kategorii -->
+<!-- lesson21_task4 - Szablon korzysta z pliku style.css podłączonego w base.html -->
+
+{% block title %}
+Kategorie
+{% endblock %}
+
+{% block content %}
+
+<h2>Lista kategorii</h2>
+
+<ul>
+    {% for category in categories %}
+        <li>{{ category.name }}</li>
+    {% empty %}
+        <li>Brak kategorii.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

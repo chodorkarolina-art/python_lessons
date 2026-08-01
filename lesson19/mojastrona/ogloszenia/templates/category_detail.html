@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+<!-- lesson21_task6 - Szczegóły jednej kategorii -->
+<!-- lesson21_task7 - Wyświetlenie artykułów przypisanych do kategorii -->
+
+{% block title %}
+{{ category.name }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ category.name }}</h1>
+
+<p>
+    To jest strona szczegółów wybranej kategorii.
+</p>
+
+<p>
+    ID kategorii: {{ category.id }}
+</p>
+
+<hr>
+
+<h2>Artykuły w tej kategorii</h2>
+
+<ul>
+    {% for article in category.article_set.all %}
+        <li>{{ article.title }}</li>
+    {% empty %}
+        <li>Brak artykułów w tej kategorii.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

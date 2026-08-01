@@ -1,0 +1,53 @@
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19> mkdir mojastrona
+
+
+    Directory: C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19
+
+
+Mode                 LastWriteTime         Length Name                                                                                                         
+----                 -------------         ------ ----                                                                                                         
+d-----        01.07.2026     21:10                mojastrona                                                                                                   
+
+
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19> cd mojastrona
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> python -m venv venv
+PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> venv\Scripts\Activate.ps1
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> pip install django
+Collecting django
+  Using cached django-6.0.6-py3-none-any.whl.metadata (3.9 kB)
+Collecting asgiref>=3.9.1 (from django)
+  Using cached asgiref-3.11.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting sqlparse>=0.5.0 (from django)
+  Using cached sqlparse-0.5.5-py3-none-any.whl.metadata (4.7 kB)
+Collecting tzdata (from django)
+  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Using cached django-6.0.6-py3-none-any.whl (8.4 MB)
+Using cached asgiref-3.11.1-py3-none-any.whl (24 kB)
+Using cached sqlparse-0.5.5-py3-none-any.whl (46 kB)
+Using cached tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Installing collected packages: tzdata, sqlparse, asgiref, django
+Successfully installed asgiref-3.11.1 django-6.0.6 sqlparse-0.5.5 tzdata-2026.2
+
+[notice] A new release of pip is available: 24.2 -> 26.1.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> django-admin --version
+6.0.6
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> django-admin startproject mojastrona .
+(venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson19\mojastrona> python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+July 01, 2026 - 21:12:24
+Django version 6.0.6, using settings 'mojastrona.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+WARNING: This is a development server. Do not use it in a production setting. Use a production WSGI or ASGI server instead.
+For more information on production servers see: https://docs.djangoproject.com/en/6.0/howto/deployment/
+[01/Jul/2026 21:12:49] "GET / HTTP/1.1" 200 12068
+Not Found: /favicon.ico
+[01/Jul/2026 21:12:49] "GET /favicon.ico HTTP/1.1" 404 2212

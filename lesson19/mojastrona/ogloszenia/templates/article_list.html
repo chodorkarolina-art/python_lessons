@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+<!-- lesson21_task8 - Lista opublikowanych artykułów -->
+<!-- lesson21_task10 - Formularz wyszukiwania artykułów -->
+
+{% block title %}
+Artykuły
+{% endblock %}
+
+{% block content %}
+
+<h2>Lista artykułów</h2>
+
+<!-- lesson21_task10 -->
+<form method="GET">
+    <input
+        type="text"
+        name="q"
+        placeholder="Szukaj artykułu..."
+        value="{{ query|default:'' }}"
+    >
+
+    <button type="submit">
+        Szukaj
+    </button>
+</form>
+
+<hr>
+
+<ul>
+    {% for item in article_data %}
+        <li>
+            {{ item.article.title }}
+
+            <!-- lesson21_task8 -->
+            {% if item.is_new %}
+                <span>NOWOŚĆ!</span>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Nie znaleziono artykułów.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

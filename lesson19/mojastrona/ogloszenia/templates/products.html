@@ -1,0 +1,24 @@
+<!-- lesson20_task4 - Wyświetlenie danych z bazy w szablonie -->
+<!-- lesson20_task5 - Szablon dziedziczący po base.html -->
+
+{% extends "base.html" %}
+
+{% block title %}
+Produkty
+{% endblock %}
+
+{% block content %}
+
+<h2>Lista produktów</h2>
+
+<ul>
+    {% for product in products %}
+        <li>
+            <strong>{{ product.name }}</strong><br>
+            {{ product.description }}<br>
+            Cena: {{ product.price }} zł
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
