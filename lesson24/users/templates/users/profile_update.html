@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Edycja profilu{% endblock %}
+
+{% block content %}
+
+<!-- lesson24_task8 -->
+<h1>Edycja profilu</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Zapisz zmiany</button>
+</form>
+
+{% endblock %}
