@@ -1,0 +1,6 @@
+from django.contrib import admin
+from .models import Car
+
+
+# lesson23_task1 - podstawowa rejestracja modelu Car
+admin.site.register(Car)
