@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.name }}</title>
+</head>
+<body>
+
+    <!-- lesson22_task2 - posty wybranej kategorii -->
+
+    <h1>Kategoria: {{ category.name }}</h1>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <strong>{{ post.title }}</strong>
+                <p>{{ post.content }}</p>
+            </li>
+        {% empty %}
+            <li>Brak postów w tej kategorii.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

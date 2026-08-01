@@ -1,0 +1,25 @@
+lesson22_task4
+
+(.venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson22> pip install Faker
+Collecting Faker
+  Downloading faker-40.28.1-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: tzdata in c:\users\dri\desktop\python_lessons\python_lessons\lesson22\.venv\lib\site-packages (from Faker) (2026.3)
+Downloading faker-40.28.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 2.0 MB/s eta 0:00:00
+Installing collected packages: Faker
+Successfully installed Faker-40.28.1
+
+[notice] A new release of pip is available: 24.2 -> 26.1.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(.venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson22> pip show Faker
+Name: Faker
+Version: 40.28.1
+Summary: Faker is a Python package that generates fake data for you.
+Home-page: https://github.com/joke2k/faker
+Author: joke2k
+Author-email: joke2k@gmail.com
+License: MIT License
+Location: C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson22\.venv\Lib\site-packages
+Requires: tzdata
+Required-by: 
+(.venv) PS C:\Users\DRI\Desktop\python_lessons\python_lessons\lesson22> 
