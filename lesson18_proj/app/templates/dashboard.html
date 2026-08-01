@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard - System Rezerwacji</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- lesson18_task3 - Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .stat-card {
+            background: linear-gradient(
+                135deg,
+                #667eea 0%,
+                #764ba2 100%
+            );
+
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .stat-card p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-header {
+            background-color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .utilization-bar {
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .utilization-fill {
+            width: 0;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #28a745,
+                #ffc107,
+                #dc3545
+            );
+
+            transition: width 0.5s ease;
+        }
+
+        .pie-chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+        }
+
+        .trend-chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+        }
+
+        .heatmap-scroll {
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: 65px repeat(24, 34px);
+            gap: 4px;
+            min-width: 980px;
+        }
+
+        .heatmap-label {
+            min-height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .heatmap-hour {
+            color: #6c757d;
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        .heatmap-cell {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            cursor: default;
+        }
+
+        .heatmap-legend {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-top: 15px;
+
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .legend-box {
+            width: 24px;
+            height: 18px;
+
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        .legend-low {
+            background-color: rgba(102, 126, 234, 0.15);
+        }
+
+        .legend-medium {
+            background-color: rgba(102, 126, 234, 0.5);
+        }
+
+        .legend-high {
+            background-color: rgba(102, 126, 234, 1);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid py-4">
+
+    <h1 class="mb-4">
+        Dashboard Rezerwacji
+    </h1>
+
+    <!-- Statystyki -->
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>
+                    {{ stats.total_rooms }}
+                </h3>
+
+                <p>
+                    Aktywne sale
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>
+                    {{ stats.total_bookings }}
+                </h3>
+
+                <p>
+                    Wszystkie rezerwacje
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>
+                    {{ stats.bookings_today }}
+                </h3>
+
+                <p>
+                    Rezerwacje dziś
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="stat-card">
+
+                <h3>
+                    {{ stats.total_users }}
+                </h3>
+
+                <p>
+                    Użytkownicy
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Najbliższe rezerwacje i wykorzystanie sal -->
+    <div class="row mt-4">
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                    Najbliższe rezerwacje
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-sm">
+
+                            <thead>
+                                <tr>
+                                    <th>Godzina</th>
+                                    <th>Sala</th>
+                                    <th>Tytuł</th>
+                                    <th>Osoba</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                {% for booking in upcoming %}
+
+                                    <tr>
+                                        <td>
+                                            {{
+                                                booking.start_time.strftime(
+                                                    '%H:%M'
+                                                )
+                                            }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.room.name }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.title }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.user.name }}
+                                        </td>
+                                    </tr>
+
+                                {% else %}
+
+                                    <tr>
+                                        <td colspan="4">
+                                            Brak rezerwacji
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                    Wykorzystanie sal
+                </div>
+
+                <div class="card-body">
+
+                    {% for room in room_utilization %}
+
+                        <div class="mb-3">
+
+                            <div
+                                class="
+                                    d-flex
+                                    justify-content-between
+                                    mb-1
+                                "
+                            >
+                                <span>
+                                    {{ room.room }}
+                                </span>
+
+                                <span>
+                                    {{ room.utilization }}%
+                                    ({{ room.hours }} h)
+                                </span>
+                            </div>
+
+                            <div class="utilization-bar">
+
+                                <div
+                                    class="utilization-fill"
+                                    data-utilization="{{ room.utilization }}"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <p>
+                            Brak danych o wykorzystaniu sal.
+                        </p>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- lesson18_task3 - wykres kołowy -->
+    <div class="row mt-2">
+
+        <div class="col-md-6 mb-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                    Rezerwacje według działów
+                </div>
+
+                <div class="card-body">
+
+                    <div class="pie-chart-container">
+
+                        <canvas id="departmentChart"></canvas>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Najaktywniejsi użytkownicy -->
+        <div class="col-md-6 mb-4">
+
+            <div class="card h-100">
+
+                <div class="card-header">
+                    Najaktywniejsi użytkownicy
+                </div>
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th>Użytkownik</th>
+                                    <th>Liczba rezerwacji</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                {% for user in top_users %}
+
+                                    <tr>
+                                        <td>
+                                            {{ user.name }}
+                                        </td>
+
+                                        <td>
+                                            {{ user.booking_count }}
+                                        </td>
+                                    </tr>
+
+                                {% else %}
+
+                                    <tr>
+                                        <td colspan="2">
+                                            Brak danych
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- lesson18_task3 - heatmapa -->
+    <div class="row">
+
+        <div class="col-12 mb-4">
+
+            <div class="card">
+
+                <div class="card-header">
+                    Heatmapa rezerwacji
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-muted">
+                        Liczba rezerwacji według dnia tygodnia
+                        i godziny.
+                    </p>
+
+                    <div class="heatmap-scroll">
+
+                        <div id="bookingHeatmap">
+                            Ładowanie heatmapy...
+                        </div>
+
+                    </div>
+
+                    <div class="heatmap-legend">
+
+                        <span>
+                            Mniej
+                        </span>
+
+                        <div
+                            class="legend-box legend-low"
+                        ></div>
+
+                        <div
+                            class="legend-box legend-medium"
+                        ></div>
+
+                        <div
+                            class="legend-box legend-high"
+                        ></div>
+
+                        <span>
+                            Więcej
+                        </span>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- lesson18_task3 - wykres trendu -->
+    <div class="row">
+
+        <div class="col-12 mb-4">
+
+            <div class="card">
+
+                <div class="card-header">
+                    Trend rezerwacji
+                </div>
+
+                <div class="card-body">
+
+                    <p class="text-muted">
+                        Liczba rezerwacji w kolejnych dniach.
+                    </p>
+
+                    <div class="trend-chart-container">
+
+                        <canvas id="trendChart"></canvas>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- lesson18_task3 - dane działów -->
+<script
+    id="department-data"
+    type="application/json"
+>
+    {{ department_stats | default([]) | tojson }}
+</script>
+
+<script>
+    // Ustawienie szerokości pasków wykorzystania sal
+    const utilizationBars =
+        document.querySelectorAll(".utilization-fill");
+
+    utilizationBars.forEach(function (bar) {
+        const utilization = Number(
+            bar.dataset.utilization
+        );
+
+        const safeUtilization = Math.min(
+            Math.max(utilization, 0),
+            100
+        );
+
+        bar.style.width = `${safeUtilization}%`;
+    });
+
+    // lesson18_task3 - wykres kołowy
+    const departmentDataElement =
+        document.getElementById("department-data");
+
+    const departmentStats = JSON.parse(
+        departmentDataElement.textContent
+    );
+
+    const departmentLabels = departmentStats.map(
+        function (item) {
+            return item.department;
+        }
+    );
+
+    const departmentValues = departmentStats.map(
+        function (item) {
+            return item.count;
+        }
+    );
+
+    const departmentCanvas =
+        document.getElementById("departmentChart");
+
+    if (
+        departmentCanvas &&
+        departmentStats.length > 0
+    ) {
+        new Chart(
+            departmentCanvas,
+            {
+                type: "pie",
+
+                data: {
+                    labels: departmentLabels,
+
+                    datasets: [
+                        {
+                            label: "Liczba rezerwacji",
+                            data: departmentValues,
+
+                            backgroundColor: [
+                                "#667eea",
+                                "#764ba2",
+                                "#28a745",
+                                "#ffc107",
+                                "#dc3545",
+                                "#17a2b8"
+                            ]
+                        }
+                    ]
+                },
+
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                    plugins: {
+                        legend: {
+                            position: "bottom"
+                        }
+                    }
+                }
+            }
+        );
+    }
+
+    // lesson18_task3 - pobranie danych z API
+    document.addEventListener(
+        "DOMContentLoaded",
+        async function () {
+            try {
+                const response = await fetch(
+                    "/api/dashboard/stats"
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Nie udało się pobrać danych."
+                    );
+                }
+
+                const dashboardData =
+                    await response.json();
+
+                drawBookingHeatmap(
+                    dashboardData.heatmap || []
+                );
+
+                drawTrendChart(
+                    dashboardData.trend || []
+                );
+
+            } catch (error) {
+                console.error(
+                    "Błąd podczas pobierania danych:",
+                    error
+                );
+
+                const heatmapContainer =
+                    document.getElementById(
+                        "bookingHeatmap"
+                    );
+
+                if (heatmapContainer) {
+                    heatmapContainer.textContent =
+                        "Nie udało się pobrać danych heatmapy.";
+                }
+            }
+        }
+    );
+
+    // lesson18_task3 - rysowanie heatmapy
+    function drawBookingHeatmap(heatmapData) {
+        const heatmapContainer =
+            document.getElementById(
+                "bookingHeatmap"
+            );
+
+        if (!heatmapContainer) {
+            return;
+        }
+
+        const days = [
+            {
+                number: 1,
+                name: "Pn"
+            },
+            {
+                number: 2,
+                name: "Wt"
+            },
+            {
+                number: 3,
+                name: "Śr"
+            },
+            {
+                number: 4,
+                name: "Cz"
+            },
+            {
+                number: 5,
+                name: "Pt"
+            },
+            {
+                number: 6,
+                name: "Sb"
+            },
+            {
+                number: 0,
+                name: "Nd"
+            }
+        ];
+
+        const bookingMap = new Map();
+
+        heatmapData.forEach(
+            function (item) {
+                const key =
+                    `${Number(item.day)}-${Number(item.hour)}`;
+
+                bookingMap.set(
+                    key,
+                    Number(item.count)
+                );
+            }
+        );
+
+        const allCounts = heatmapData.map(
+            function (item) {
+                return Number(item.count);
+            }
+        );
+
+        const maximumCount = Math.max(
+            ...allCounts,
+            1
+        );
+
+        const grid =
+            document.createElement("div");
+
+        grid.className = "heatmap-grid";
+
+        const emptyCorner =
+            document.createElement("div");
+
+        emptyCorner.className =
+            "heatmap-label";
+
+        grid.appendChild(emptyCorner);
+
+        for (
+            let hour = 0;
+            hour < 24;
+            hour++
+        ) {
+            const hourLabel =
+                document.createElement("div");
+
+            hourLabel.className =
+                "heatmap-label heatmap-hour";
+
+            hourLabel.textContent =
+                hour.toString().padStart(2, "0");
+
+            grid.appendChild(hourLabel);
+        }
+
+        days.forEach(
+            function (day) {
+                const dayLabel =
+                    document.createElement("div");
+
+                dayLabel.className =
+                    "heatmap-label";
+
+                dayLabel.textContent =
+                    day.name;
+
+                grid.appendChild(dayLabel);
+
+                for (
+                    let hour = 0;
+                    hour < 24;
+                    hour++
+                ) {
+                    const key =
+                        `${day.number}-${hour}`;
+
+                    const count =
+                        bookingMap.get(key) || 0;
+
+                    const cell =
+                        document.createElement("div");
+
+                    cell.className =
+                        "heatmap-cell";
+
+                    let opacity = 0.08;
+
+                    if (count > 0) {
+                        opacity =
+                            0.25 +
+                            (
+                                count /
+                                maximumCount
+                            ) * 0.75;
+                    }
+
+                    cell.style.backgroundColor =
+                        `rgba(102, 126, 234, ${opacity})`;
+
+                    if (opacity >= 0.6) {
+                        cell.style.color =
+                            "white";
+                    } else {
+                        cell.style.color =
+                            "#212529";
+                    }
+
+                    if (count > 0) {
+                        cell.textContent =
+                            count;
+                    } else {
+                        cell.textContent =
+                            "";
+                    }
+
+                    cell.title =
+                        `${day.name}, ` +
+                        `${hour}:00 – ` +
+                        `${count} rezerwacji`;
+
+                    grid.appendChild(cell);
+                }
+            }
+        );
+
+        heatmapContainer.innerHTML = "";
+        heatmapContainer.appendChild(grid);
+    }
+
+    // lesson18_task3 - rysowanie wykresu trendu
+    function drawTrendChart(trendData) {
+        const trendCanvas =
+            document.getElementById(
+                "trendChart"
+            );
+
+        if (!trendCanvas) {
+            return;
+        }
+
+        const trendLabels = trendData.map(
+            function (item) {
+                return item.date;
+            }
+        );
+
+        const trendValues = trendData.map(
+            function (item) {
+                return Number(item.count);
+            }
+        );
+
+        new Chart(
+            trendCanvas,
+            {
+                type: "line",
+
+                data: {
+                    labels: trendLabels,
+
+                    datasets: [
+                        {
+                            label: "Liczba rezerwacji",
+                            data: trendValues,
+
+                            borderColor: "#667eea",
+
+                            backgroundColor:
+                                "rgba(102, 126, 234, 0.15)",
+
+                            borderWidth: 3,
+
+                            pointBackgroundColor:
+                                "#667eea",
+
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+
+                    interaction: {
+                        intersect: false,
+                        mode: "index"
+                    },
+
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: "top"
+                        },
+
+                        tooltip: {
+                            callbacks: {
+                                label:
+                                    function (context) {
+                                        return (
+                                            "Liczba rezerwacji: " +
+                                            context.parsed.y
+                                        );
+                                    }
+                            }
+                        }
+                    },
+
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+
+                            ticks: {
+                                precision: 0,
+                                stepSize: 1
+                            },
+
+                            title: {
+                                display: true,
+                                text: "Liczba rezerwacji"
+                            }
+                        },
+
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Data"
+                            }
+                        }
+                    }
+                }
+            }
+        );
+    }
+</script>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+</body>
+</html>

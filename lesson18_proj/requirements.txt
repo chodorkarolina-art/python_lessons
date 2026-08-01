@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+# lesson18_task5
+python-dateutil==2.9.0.post0
+# lesson18_task6
+reportlab==5.0.0
