@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Galeria</title>
+</head>
+<body>
+<!--zadanie 7 -->
+
+<h1>Galeria</h1>
+
+{% for img in images %}
+    <div>
+        <img src="{{ img.url }}" width="400">
+        <p>{{ img.caption }}</p>
+    </div>
+{% endfor %}
+
+</body>
+</html>

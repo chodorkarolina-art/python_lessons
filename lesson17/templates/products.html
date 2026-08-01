@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produkty</title>
+</head>
+<body>
+
+<!-- Zadanie 9 - Wyświetlanie produktów -->
+<h1>Lista produktów</h1>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Nazwa</th>
+        <th>Cena</th>
+    </tr>
+
+    {% for p in products %}
+    <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }} zł</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

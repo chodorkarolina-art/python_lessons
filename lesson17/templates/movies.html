@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+</head>
+<body>
+
+<h1>Filmy</h1>
+
+<ul>
+<!-- lesso17_task5 -->
+{% for movie in movies %}
+    {% if loop.index % 2 == 0 %}
+        <li style="background-color: cadetblue;">{{ movie }}</li>
+    {% else %}
+    <li>{{movie}}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
+</body>
+</html>
