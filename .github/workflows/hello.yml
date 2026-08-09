@@ -1,0 +1,14 @@
+# lesson38_task1
+
+name: Hello CI/CD
+
+on:
+  push:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hello message
+        run: echo "Hello, CI/CD!"
