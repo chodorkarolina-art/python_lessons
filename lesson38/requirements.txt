@@ -1,0 +1,3 @@
+# lesson38_task3
+requests
+pytest

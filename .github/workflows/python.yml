@@ -10,13 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # lesson38_task2
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # lesson38_task2
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
+      # lesson38_task3
+      - name: Install dependencies
+        run: pip install -r lesson38/requirements.txt
+
+      # lesson38_task2
       - name: Run Python file
         run: python lesson38/src/hello.py
