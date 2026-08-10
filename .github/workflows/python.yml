@@ -24,6 +24,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r lesson38/requirements.txt
 
+        # lesson38_task4
+      - name: Run tests
+        run: python -m pytest lesson38/tests/test_math.py
+
       # lesson38_task2
       - name: Run Python file
         run: python lesson38/src/hello.py
