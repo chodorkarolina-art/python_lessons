@@ -9,16 +9,21 @@ jobs:
   run-python:
     runs-on: ubuntu-latest
 
+    # lesson38_task6
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
     steps:
       # lesson38_task2
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # lesson38_task2
-      - name: Set up Python 3.11
+      # lesson38_task2 + lesson38_task6
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
 
       # lesson38_task5
       - name: Cache pip dependencies
@@ -33,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r lesson38/requirements.txt
 
-        # lesson38_task4
+      # lesson38_task4
       - name: Run tests
         run: python -m pytest lesson38/tests/test_math.py
 
