@@ -2,8 +2,15 @@
 
 name: Python Workflow
 
+# lesson38_task8
 on:
   push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
 
 jobs:
   run-python:
