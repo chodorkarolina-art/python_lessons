@@ -1,3 +1,6 @@
 # lesson38_task3
 requests
 pytest
+
+# lesson38_task7
+flake8

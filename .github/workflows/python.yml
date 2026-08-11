@@ -38,6 +38,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r lesson38/requirements.txt
 
+      # lesson38_task7
+      - name: Run flake8
+        run: flake8 lesson38/src/
+
       # lesson38_task4
       - name: Run tests
         run: python -m pytest lesson38/tests/test_math.py
