@@ -107,3 +107,8 @@ jobs:
         with:
           name: build-result
           path: build.txt
+
+      # lesson38_task12
+      - name: Ready to deploy
+        if: github.ref == 'refs/heads/main' && success()
+        run: echo "Ready to deploy!"
