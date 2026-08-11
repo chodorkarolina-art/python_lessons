@@ -12,6 +12,10 @@ on:
 
   workflow_dispatch:
 
+# lesson38_task11
+env:
+  APP_NAME: lesson38-app
+
 jobs:
 
   # lesson38_task9
@@ -82,7 +86,17 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 
+    # lesson38_task11
+    env:
+      BUILD_MODE: production
+
     steps:
+      # lesson38_task11
+      - name: Show environment variables
+        run: |
+          echo "APP_NAME=$APP_NAME"
+          echo "BUILD_MODE=$BUILD_MODE"
+
       # lesson38_task10
       - name: Build
         run: echo "Build completed successfully!" > build.txt
