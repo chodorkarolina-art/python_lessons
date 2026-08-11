@@ -83,5 +83,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # lesson38_task10
       - name: Build
-        run: echo "Build completed successfully!"
+        run: echo "Build completed successfully!" > build.txt
+
+      # lesson38_task10
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-result
+          path: build.txt
