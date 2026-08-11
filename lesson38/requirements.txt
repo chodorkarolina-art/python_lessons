@@ -4,3 +4,7 @@ pytest
 
 # lesson38_task7
 flake8
+
+# lesson38_task13
+pytest-cov
+black

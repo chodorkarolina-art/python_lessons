@@ -1,5 +1,6 @@
 # lesson38_task2
 
+
 def hello():
     return "Hello from Python!"
 

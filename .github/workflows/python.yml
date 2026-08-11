@@ -39,6 +39,10 @@ jobs:
       - name: Run flake8
         run: flake8 lesson38/src/
 
+      # lesson38_task13
+      - name: Check formatting with Black
+        run: python -m black --check lesson38/src lesson38/tests
+
   # lesson38_task9
   test:
     needs: lint
@@ -73,9 +77,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r lesson38/requirements.txt
 
-      # lesson38_task4
-      - name: Run tests
-        run: python -m pytest lesson38/tests/test_math.py
+      # lesson38_task4 + lesson38_task13
+      - name: Run tests with coverage
+        run: python -m pytest lesson38/tests --cov=lesson38/src --cov-report=term
 
       # lesson38_task2
       - name: Run Python file
